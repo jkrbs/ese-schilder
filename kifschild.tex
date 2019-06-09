@@ -1,7 +1,16 @@
 \documentclass{kifschild}
 \begin{document}
+% build as many signs as you may want.
+% \schild{<text1>}{<text2>}{<qr-url>}{<image-url>}{<spacing>}
+%   <text1>     The Text that takes the bigger part of the Sign. It fits to its bounds.
+%   <text2>     The Text that takes the lower smaller part of the sign. Also fits to bounds.
+%   <qr-url>    URL for qr code to generate as an image. Do not use together with <image-url>
+%               Leave it blank for no qr code.
+%   <image-url> local path for image to include. It fits to the space.
+%               Do not use together with <qr-url>. Leave it blank for no image.
+%   <spacing>   For finetuning reasons. Add length to space out the boxes for <text1> and <text2>
 
-\schild{Kein Papier?}{Sag dem Infopoint bescheid}{https://dvb.de}{}
-\schild{Kein Papier!}{Ich sag' hier niemandem was.}{}{charlie.jpg}
+\schild{Kein Papier?}{Sag dem Infopoint bescheid}{https://dvb.de}{}{1cm}
+\schild{Kein Papier!}{Ich sag' hier niemandem was.}{}{charlie.jpg}{}
 
 \end{document}

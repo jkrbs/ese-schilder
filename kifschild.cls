@@ -195,7 +195,7 @@
 % pagestyle
 \pagestyle{empty}
 
-\newcommand{\schild}[4]{
+\newcommand{\schild}[5]{
     \begin{minipage}[b][\textheight][b]{.25\textwidth}%
         \centering
         % QR code url is 3rd argument
@@ -223,7 +223,7 @@
             #1
         \end{fitbox}
 
-        \vspace{0cm}
+        \ifthenelse{\not{\equal{#5}{}}}{\vspace{#5}}{}
         \begin{fitbox}{\textwidth}{.22\textheight}
             \centering
             #2
