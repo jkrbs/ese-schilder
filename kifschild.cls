@@ -20,6 +20,7 @@
 \backgroundsetup{scale = 1.0, angle = 0, opacity = 1.0,%
   contents = {\includegraphics[width = \paperwidth, height = \paperheight,
     keepaspectratio] {background}}}%
+\usepackage{ifthen}
 
 % fitbox stuff
 \usepackage{environ}% http://ctan.org/pkg/environ
@@ -194,4 +195,40 @@
 % pagestyle
 \pagestyle{empty}
 
+\newcommand{\schild}[4]{
+    \begin{minipage}[b][\textheight][b]{.25\textwidth}%
+        \centering
+        % QR code url is 3rd argument
+        \ifthenelse{\not{\equal{#3}{}}}{
+            % qrcode
+            \qrcode[height=.95\textwidth]{#3}
+            \begin{fitbox}{.95\textwidth}{1cm}
+                \url{#3}
+            \end{fitbox}
+        }{\hfill}
+        % pictogram is 4th argument
+        \ifthenelse{\not{\equal{#4}{}}}{
+            % pictogram
+            \includegraphics[width=\textwidth, keepaspectratio]{#4}%
+        }{\hfill}
+        \vspace{10px}
+    \end{minipage}
+    %
+    \hspace{.05\textwidth}
+    %
+    \begin{minipage}[b][\textheight][c]{.65\textwidth}
+
+        \begin{fitbox}{\textwidth}{.5\textheight}  % adjust textheight here if too big
+            \centering
+            #1
+        \end{fitbox}
+
+        \vspace{0cm}
+        \begin{fitbox}{\textwidth}{.22\textheight}
+            \centering
+            #2
+        \end{fitbox}
+    \end{minipage}
+
+}
 
