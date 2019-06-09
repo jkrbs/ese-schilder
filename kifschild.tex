@@ -1,0 +1,34 @@
+\documentclass{kifschild}
+
+\begin{document}
+
+\begin{minipage}[b][\textheight][b]{.25\textwidth}%
+  \centering
+  % pictogram
+  %\includegraphics[width=\textwidth, keepaspectratio]{charlie.jpg}%
+
+   % qrcode
+   \qrcode[height=.95\textwidth]{https://m.dvb.de}
+   \begin{fitbox}{.95\textwidth}{1cm}
+     \url{https://m.dvb.de}
+   \end{fitbox}
+\end{minipage}
+%
+\hspace{.05\textwidth}
+%
+\begin{minipage}[b][\textheight][c]{.65\textwidth}
+
+  \begin{fitbox}{\textwidth}{.5\textheight}  % adjust textheight here if too big
+    \centering
+    NP
+  \end{fitbox}
+
+  \vspace{2cm}
+  \begin{fitbox}{\textwidth}{.22\textheight}
+    \centering
+    Unisex-Toilette\\
+    (nicht pissoiriert)
+  \end{fitbox}
+\end{minipage}
+
+\end{document}
