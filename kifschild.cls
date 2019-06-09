@@ -20,7 +20,8 @@
 \backgroundsetup{scale = 1.0, angle = 0, opacity = 1.0,%
   contents = {\includegraphics[width = \paperwidth, height = \paperheight,
     keepaspectratio] {background}}}%
-\usepackage{ifthen}
+
+\usepackage{xkeyval}
 
 % fitbox stuff
 \usepackage{environ}% http://ctan.org/pkg/environ
@@ -195,38 +196,61 @@
 % pagestyle
 \pagestyle{empty}
 
-\newcommand{\schild}[5]{
+\makeatletter
+\define@key{schild}{qr}{\newcommand\schild@qr{#1}}
+\define@key{schild}{image}{\newcommand\schild@image{#1}}
+\define@key{schild}{spacing}{\newcommand\schild@spacing{#1}}
+\define@key{schild}{upper-height}{\def\upperheight{#1}}
+\define@key{schild}{lower-height}{\def\lowerheight{#1}}
+\define@key{schild}{offset-top}{\newcommand\schild@offsettop{#1}}
+
+
+
+\newcommand{\schild}[3]{
+    \let\schild@qr\undefined
+    \let\schild@image\undefined
+    \let\schild@spacing\undefined
+    \let\schild@offsettop\undefined
+    \def\upperheight{.55}
+    \def\lowerheight{.2}
+    \setkeys{schild}{#1}
     \begin{minipage}[b][\textheight][b]{.25\textwidth}%
         \centering
         % QR code url is 3rd argument
-        \ifthenelse{\not{\equal{#3}{}}}{
-            % qrcode
-            \qrcode[height=.95\textwidth]{#3}
-            \begin{fitbox}{.95\textwidth}{1cm}
-                \url{#3}
-            \end{fitbox}
-        }{\hfill}
-        % pictogram is 4th argument
-        \ifthenelse{\not{\equal{#4}{}}}{
-            % pictogram
-            \includegraphics[width=\textwidth, keepaspectratio]{#4}%
-        }{\hfill}
+        \@ifundefined{schild@qr}
+            {\hfill}
+            {
+                % qrcode
+                \qrcode[height=.95\textwidth]{\schild@qr}
+                \begin{fitbox}{.95\textwidth}{1cm}
+                    \url{\schild@qr}
+                \end{fitbox}
+            }
+        \@ifundefined{schild@image}
+            {\hfill}
+            {\includegraphics[width=\textwidth, keepaspectratio]{\schild@image}}
         \vspace{10px}
     \end{minipage}
     %
     \hspace{.05\textwidth}
     %
     \begin{minipage}[b][\textheight][c]{.65\textwidth}
+        \@ifundefined{schild@offsettop}
+            {\vspace{0cm}}
+            {\vspace{\schild@offsettop}}
 
-        \begin{fitbox}{\textwidth}{.5\textheight}  % adjust textheight here if too big
-            \centering
-            #1
-        \end{fitbox}
-
-        \ifthenelse{\not{\equal{#5}{}}}{\vspace{#5}}{}
-        \begin{fitbox}{\textwidth}{.22\textheight}
+        \begin{fitbox}{\textwidth}{\upperheight\textheight}
             \centering
             #2
+        \end{fitbox}
+
+        \@ifundefined{schild@spacing}
+            {\vspace{0cm}}
+            {\vspace{\schild@spacing}}
+
+        \begin{fitbox}{\textwidth}{\lowerheight\textheight}
+            \centering
+            #3
         \end{fitbox}
     \end{minipage}
 

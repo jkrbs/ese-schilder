@@ -1,90 +1,98 @@
 \documentclass{kifschild}
 \begin{document}
 % build as many signs as you may want.
-% \schild{<text1>}{<text2>}{<qr-url>}{<image-url>}{<spacing>}
+% \schild{<options>}{<text1>}{<text2>}
 %   <text1>     The Text that takes the bigger part of the Sign. It fits to its bounds.
 %   <text2>     The Text that takes the lower smaller part of the sign. Also fits to bounds.
-%   <qr-url>    URL for qr code to generate as an image. Do not use together with <image-url>
-%               Leave it blank for no qr code.
-%   <image-url> local path for image to include. It fits to the space.
-%               Do not use together with <qr-url>. Leave it blank for no image.
-%   <spacing>   For finetuning reasons. Add length to space out the boxes for <text1> and <text2>
+%   <options>   Options string as in form: key=value,...
+%      qr=<url>    URL for qr code to generate as an image. Do not use together with image=<url>
+%                  Leave it blank for no qr code.
+%      image=<url> local path for image to include. It fits to the space.
+%                  Do not use together with qr=<url>. Leave it blank for no image.
+%
+%      further finetuning:
+%       |-----------------------------------------------|
+%       |                                               | ------ offset-top     default: 0cm
+%       |  |----------------------------------------|   | ---\
+%       |  |                                        |   |     |
+%       |  |                                        |   |     |
+%       |  |                                        |   |     |
+%       |  |                                        |   |     \
+%       |  |                                        |   |      - upper-height   default: 0.55
+%       |  |                                        |   |     /
+%       |  |                                        |   |     |
+%       |  |                                        |   |     |
+%       |  |                                        |   |     |
+%       |  |----------------------------------------|   | ---/
+%       |                                               | ------ spacing        default: 0cm
+%       |  |----------------------------------------|   | ---\
+%       |  |                                        |   |     \
+%       |  |                                        |   |      - lower-height   default: .2
+%       |  |                                        |   |     /
+%       |  |----------------------------------------|   | ---/
+%       |                                               |
+%       |-----------------------------------------------|
+%
 
-%\schild{Kein Papier?}{Sag dem Infopoint bescheid}{https://dvb.de}{}{1cm}
-%\schild{Kein Papier!}{Ich sag' hier niemandem was.}{}{charlie.jpg}{}
+%\schild{qr=https://kif.ifsr.de,spacing=2cm,upper-height=.4,lower-height=.1,offset-top=2cm}{Beispiel Nummer~I}{mit superviel kleinem Text}
+%\schild{image=charlie.jpg}{Zweites Beispiel}{mit Bild an der Seite}
 
-\schild{Plena?}{Heinz Schönfeld Hörsaal}{}{pfeil_oben.jpg}
-\schild{Plena!}{Heinz Schönfeld Hörsaal}{}{sie_haben_ihr_ziel_erreicht.png}
+\schild{image=pfeil_oben.jpg}{Plena?}{Heinz Schönfeld Hörsaal}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{Plena!}{Heinz Schönfeld Hörsaal}
+\schild{}{Barkhausen-Bau \\ 106, 188, 189, 213, 218}{AK's}
+\schild{image=pfeil_oben.jpg}{AK's}{Barkhausen-Bau \\ 106, 188, 189, 213, 218}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{AK}{Barkhausen-Bau \\ 106}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{AK}{Barkhausen-Bau \\ 188}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{AK}{Barkhausen-Bau \\ 189}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{AK}{Barkhausen-Bau \\ 213}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{AK}{Barkhausen-Bau \\ 218}
+\schild{image=geradeaus_rechts.jpg}{Turnhalle?}{Schlafen, Duschen, ...}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{Turnhalle?}{Schlafen, Duschen, ...}
+\schild{image=treppe.jpg}{Orga}{Büro}
+\schild{image=pfeil_rechts.jpg}{Orga}{Büro}
+\schild{image=pfeil_links.jpg}{Orga}{Büro}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{OrgaBüro}{Kleiner Ratssaal}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{OrgaBüro}{Großer Ratssaal}
+\schild{image=unisex.jpg}{Toilette}{Unisex}
+\schild{image=unisex.jpg}{Toilette}{Unisex}
+\schild{image=girl.jpg}{Toilette}{Binär}
+\schild{image=boy.jpg}{Toilette}{Binär}
+\schild{image=pfeil_rechts.jpg}{Toilette}{Binär}
+\schild{image=pfeil_links.jpg}{Toilette}{Unisex}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{Computer!}{E065}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{Computer!}{E067}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{Computer!}{E069}
+\schild{image=pfeil_links.jpg}{Computer?}{E069}
+\schild{image=pfeil_oben.jpg}{Computer?}{E069}
+\schild{image=pfeil_links.jpg}{Computer?}{E065, E067, E069}
+\schild{image=geradeaus_rechts.jpg}{AK's}{E001, E005, E006 und E010}
+\schild{image=geradeaus_links.jpg}{AK's}{E001, E005, E006 und E010}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{AK's}{E001}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{AK's}{E005}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{AK's}{E006}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{AK's}{E010}
+\schild{image=sie_haben_ihr_ziel_erreicht.png}{KdV}{Ascii, E016}
+\schild{image=pfeil_rechts.jpg}{KdV}{Ascii, E016}
+\schild{image=pfeil_oben.jpg}{KdV}{Ascii, E016}
+\schild{image=tee.png}{AK Tee}{E007}
+\schild{image=geradeaus_rechts.jpg}{AK Tee}{E001, E005, E006 und E010}
+\schild{image=geradeaus_links.jpg}{AK Tee}{E001, E005, E006 und E010}
+\schild{image=geradeaus_rechts.jpg}{Ewiges Frühstück}{E008}
+\schild{image=pfeil_oben.jpg}{Ewiges Frühstück}{E008}
+\schild{image=breakfast.png}{Ewiges Frühstück}{E008}
+\schild{image=coffee.jpg}{KIF-Café}{E023}
+\schild{image=geradeaus_rechts.jpg}{KIF-Café}{E023}
+\schild{image=geradeaus_links.jpg}{KIF-Café}{E023}
+\schild{image=geradeaus_rechts.jpg}{KIF-Café}{E023}
+\schild{image=geradeaus_links.jpg}{KIF-Café}{E023}
+\schild{image=geradeaus_links.jpg}{Info-}{Point}
+\schild{image=geradeaus_links.jpg}{Info-}{Point}
+\schild{image=fsr.jpg}{Info-}{Point}
+\schild{image=boobles.jpg}{Boobles}{Was sind wir?}
+\schild{image=teich.jpg}{Teich}{aka Gebäudekühlanlage}
+\schild{image=geraderechts}{Teich}{aka Gebäudekühlanlage}
+\schild{image=geradelinks.png}{Teich}{aka Gebäudekühlanlage}
+\schild{image=pfeil_oben.jpg}{Teich}{aka Gebäudekühlanlage}
 
-
-\schild{AK's}{Barkhausen-Bau \\ 106, 188, 189, 213, 218}{}{}
-\schild{AK's}{Barkhausen-Bau \\ 106, 188, 189, 213, 218}{}{pfeil_oben.jpg}
-\schild{AK}{Barkhausen-Bau \\ 106}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{AK}{Barkhausen-Bau \\ 188}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{AK}{Barkhausen-Bau \\ 189}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{AK}{Barkhausen-Bau \\ 213}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{AK}{Barkhausen-Bau \\ 218}{}{sie_haben_ihr_ziel_erreicht.png}
-
-\schild{Turnhalle?}{Schlafen, Duschen, ...}{}{geradeaus_rechts.jpg}
-\schild{Turnhalle?}{Schlafen, Duschen, ...}{}{sie_haben_ihr_ziel_erreicht.png}
-
-\schild{Orga}{Büro}{}{treppe.jpg}
-\schild{Orga}{Büro}{}{pfeil_rechts.jpg}
-\schild{Orga}{Büro}{}{pfeil_links.jpg}
-\schild{OrgaBüro}{Kleiner Ratssaal}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{OrgaBüro}{Großer Ratssaal}{}{sie_haben_ihr_ziel_erreicht.png}
-
-\schild{Toilette}{Unisex}{}{unisex.jpg}
-\schild{Toilette}{Unisex}{}{unisex.jpg}
-\schild{Toilette}{Binär}{}{girl.jpg}
-\schild{Toilette}{Binär}{}{boy.jpg}
-\schild{Toilette}{Binär}{}{pfeil_rechts.jpg}
-\schild{Toilette}{Unisex}{}{pfeil_links.jpg}
-
-
-\schild{Computer!}{E065}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{Computer!}{E067}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{Computer!}{E069}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{Computer?}{E069}{}{pfeil_links.jpg}
-\schild{Computer?}{E069}{}{pfeil_oben.jpg}
-\schild{Computer?}{E065, E067, E069}{}{pfeil_links.jpg}
-
-\schild{AK's}{E001, E005, E006 und E010}{}{geradeaus_rechts.jpg}
-\schild{AK's}{E001, E005, E006 und E010}{}{geradeaus_links.jpg}
-\schild{AK's}{E001}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{AK's}{E005}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{AK's}{E006}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{AK's}{E010}{}{sie_haben_ihr_ziel_erreicht.png}
-
-\schild{KdV}{Ascii, E016}{}{sie_haben_ihr_ziel_erreicht.png}
-\schild{KdV}{Ascii, E016}{}{pfeil_rechts.jpg}
-\schild{KdV}{Ascii, E016}{}{pfeil_oben.jpg}
-\schild{AK Tee}{E007}{}{tee.png}
-\schild{AK Tee}{E001, E005, E006 und E010}{}{geradeaus_rechts.jpg}
-\schild{AK Tee}{E001, E005, E006 und E010}{}{geradeaus_links.jpg}
-
-\schild{Ewiges Frühstück}{E008}{}{geradeaus_rechts.jpg}
-\schild{Ewiges Frühstück}{E008}{}{pfeil_oben.jpg}
-\schild{Ewiges Frühstück}{E008}{}{breakfast.png}
-
-\schild{KIF-Café}{E023}{}{coffee.jpg}
-\schild{KIF-Café}{E023}{}{geradeaus_rechts.jpg}
-\schild{KIF-Café}{E023}{}{geradeaus_links.jpg}
-\schild{KIF-Café}{E023}{}{geradeaus_rechts.jpg}
-\schild{KIF-Café}{E023}{}{geradeaus_links.jpg}
-
-\schild{Info-}{Point}{}{geradeaus_links.jpg}
-\schild{Info-}{Point}{}{geradeaus_links.jpg}
-\schild{Info-}{Point}{}{fsr.jpg}
-
-\schild{Boobles}{Was sind wir?}{}{boobles.jpg}
-
-\schild{Teich}{aka Gebäudekühlanlage}{}{teich.jpg}
-\schild{Teich}{aka Gebäudekühlanlage}{}{geraderechts}
-\schild{Teich}{aka Gebäudekühlanlage}{}{geradelinks.jpg}
-\schild{Teich}{aka Gebäudekühlanlage}{}{pfeil_oben.jpg}
-
-
->>>>>>> nearly finished signs
 
 \end{document}
