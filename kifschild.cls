@@ -5,7 +5,7 @@
 \LoadClass{scrartcl}
 
 % packages
-\usepackage[landscape, left=.0cm, bottom=0.3cm, top=.3cm, right=1.25cm]{geometry}
+\usepackage[landscape, left=6.6mm, bottom=0.9cm, top=.3cm, right=1.25cm]{geometry}
 \usepackage{qrcode}
 \usepackage{xcolor}
 \definecolor{kifgray}{HTML}{595959}
@@ -17,7 +17,7 @@
 % \setmainfont{Raleway}
 
 \usepackage{background}
-\backgroundsetup{scale = 1.0, angle = 0, opacity = 1.0,%
+\backgroundsetup{scale = 0.97, angle = 0, opacity = 1.0,%
   contents = {\includegraphics[width = \paperwidth, height = \paperheight,
     keepaspectratio] {background}}}%
 
@@ -197,6 +197,7 @@
 \pagestyle{empty}
 
 \makeatletter
+\define@key{schild}{text}{\newcommand\schild@text{#1}}
 \define@key{schild}{qr}{\newcommand\schild@qr{#1}}
 \define@key{schild}{image}{\newcommand\schild@image{#1}}
 \define@key{schild}{spacing}{\newcommand\schild@spacing{#1}}
@@ -207,6 +208,7 @@
 
 
 \newcommand{\schild}[3]{
+    \let\schild@text\undefined
     \let\schild@qr\undefined
     \let\schild@image\undefined
     \let\schild@spacing\undefined
@@ -214,23 +216,42 @@
     \def\upperheight{.55}
     \def\lowerheight{.2}
     \setkeys{schild}{#1}
-    \begin{minipage}[b][\textheight][b]{.25\textwidth}%
+    \begin{minipage}[b][8.86cm][c]{8.275cm}%
         \centering
+        \@ifundefined{schild@text}
+          {}
+          {
+            \begin{minipage}{\textwidth}%
+              \begin{fitbox}{7.1cm}{7.1cm}
+                \centering
+                \schild@text%
+              \end{fitbox}
+            \end{minipage}
+          }
+          
         % QR code url is 3rd argument
         \@ifundefined{schild@qr}
-            {\hfill}
+            {}
             {
                 % qrcode
-                \qrcode[height=.95\textwidth]{\schild@qr}
-                \begin{fitbox}{.95\textwidth}{1cm}
-                    \url{\schild@qr}
+                \textcolor{kifgray}{\qrcode[height=6.3cm]{\schild@qr}}
+                \begin{fitbox}{6.3cm}{1cm}
+                  \textcolor{kifgray}{\url{\schild@qr}}
                 \end{fitbox}
             }
         \@ifundefined{schild@image}
-            {\hfill}
-            {\includegraphics[width=\textwidth, keepaspectratio]{\schild@image}}
-        \vspace{10px}
-    \end{minipage}
+            {}
+            {\includegraphics[width=7.1cm,
+                              height=7.1cm,
+                              keepaspectratio]{\schild@image}}
+
+        \@ifundefined{schild@image}
+          {
+            \@ifundefined{schild@image}
+            {\hfill}{}
+          }{}
+        % \vspace{10px}
+    \end{minipage}%
     %
     \hspace{.05\textwidth}
     %
