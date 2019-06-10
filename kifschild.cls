@@ -228,7 +228,7 @@
               \end{fitbox}
             \end{minipage}
           }
-          
+
         % QR code url is 3rd argument
         \@ifundefined{schild@qr}
             {}
@@ -253,13 +253,12 @@
         % \vspace{10px}
     \end{minipage}%
     %
-    \hspace{.05\textwidth}
+    \hspace{.73cm}
     %
-    \begin{minipage}[b][\textheight][c]{.65\textwidth}
+    \begin{minipage}[b][\textheight][c]{.674\textwidth}
         \@ifundefined{schild@offsettop}
             {\vspace{0cm}}
             {\vspace{\schild@offsettop}}
-
         \begin{fitbox}{\textwidth}{\upperheight\textheight}
             \centering
             #2
@@ -274,6 +273,5 @@
             #3
         \end{fitbox}
     \end{minipage}
-
+    \pagebreak
 }
-
