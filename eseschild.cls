@@ -1,5 +1,5 @@
 %vim:ft=tex
-\ProvidesClass{kifschild}[2019/06/09 Poster auf der KIF]
+\ProvidesClass{eseschild}[2019/06/09 Poster auf der KIF]
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 \LoadClass{scrartcl}
@@ -8,11 +8,11 @@
 \usepackage[landscape, left=6.6mm, bottom=0.9cm, top=.3cm, right=1.25cm]{geometry}
 \usepackage{qrcode}
 \usepackage{xcolor}
-\definecolor{kifgray}{HTML}{595959}
+\definecolor{esegray}{HTML}{595959}
 \usepackage{montserrat}
 % \usepackage{raleway}
 \usepackage{fontspec}
-\setmainfont[Color=kifgray]{[Bungee-Regular.ttf]}
+\setmainfont[Color=esegray]{[Bungee-Regular.ttf]}
 %\setmainfont{Montserrat}
 % \setmainfont{Raleway}
 
@@ -233,9 +233,9 @@
             {}
             {
                 % qrcode
-                \textcolor{kifgray}{\qrcode[height=6.3cm]{\schild@qr}}
+                \textcolor{esegray}{\qrcode[height=6.3cm]{\schild@qr}}
                 \begin{fitbox}{6.3cm}{1cm}
-                  \textcolor{kifgray}{\url{\schild@qr}}
+                  \textcolor{esegray}{\url{\schild@qr}}
                 \end{fitbox}
             }
         \@ifundefined{schild@image}
